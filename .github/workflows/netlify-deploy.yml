@@ -1,4 +1,4 @@
-name: Cypress Tests
+name: Run tests
 
 on: [push]
 
@@ -12,6 +12,13 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v2
+
         with:
           build: npm run build
           start: npm start
+
+      - name: Save video
+        uses: actions/upload-artifact@v2
+        with:
+          name: demo.js.mp4
+          path: cypress/videos/demo.js.mp4
